@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./Vulnerabilities.css";
 import { useAuth } from "../context/AuthContext";
 
@@ -22,7 +22,7 @@ function Vulnerabilities() {
     status: "Open"
   });
 
-  const fetchVulnerabilities = () => {
+  const fetchVulnerabilities = useCallback(() => {
     fetch("http://localhost:8001/vulnerabilities/", {
       headers: {
         "Content-Type": "application/json",
@@ -38,22 +38,20 @@ function Vulnerabilities() {
         console.error("Error fetching vulnerabilities:", err);
         setLoading(false);
       });
-  };
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-    fetchVulnerabilities();
   }, [token]);
 
+  useEffect(() => {
+    fetchVulnerabilities();
+  }, [fetchVulnerabilities]);
+
   // Listen for dashboard refresh
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleStorageChange = () => {
       fetchVulnerabilities();
     };
     window.addEventListener("vulnChanged", handleStorageChange);
     return () => window.removeEventListener("vulnChanged", handleStorageChange);
-  }, [token]);
+  }, [fetchVulnerabilities]);
 
   // Add new vulnerability
   const addVulnerability = async (e) => {
