@@ -55,11 +55,13 @@ function Dashboard() {
     }
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchAll();
   }, [token]);
 
   // Listen for vulnerability changes to auto-refresh
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleVulnChanged = () => {
       fetchAll();

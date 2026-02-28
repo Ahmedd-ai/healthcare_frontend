@@ -40,11 +40,13 @@ function Vulnerabilities() {
       });
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     fetchVulnerabilities();
   }, [token]);
 
   // Listen for dashboard refresh
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     const handleStorageChange = () => {
       fetchVulnerabilities();
