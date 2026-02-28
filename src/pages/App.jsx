@@ -1,16 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider, useAuth } from "./context/AuthContext";
-import Sidebar from "./components/Sidebar";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "../context/AuthContext";
+import Sidebar from "../components/Sidebar";
 
-// Pages
-import Compliance from "./pages/Compliance";
-import Anomalies from "./pages/Anomalies";
-import PHIRisks from "./pages/PHIRisks";
-import Assets from "./pages/Assets";
-import Vulnerabilities from "./pages/Vulnerabilities";
-import Dashboard from "./pages/Dashboard";
-import Login from "./pages/Login";
+import Dashboard from "./Dashboard";
+import Assets from "./Assets";
+import Vulnerabilities from "./Vulnerabilities";
+import PHIRisks from "./PHIRisks";
+import Compliance from "./Compliance";
+import Anomalies from "./Anomalies";
+import Login from "./Login";
 
 function ProtectedRoute({ children }) {
   const { token, loading } = useAuth();
@@ -108,9 +106,9 @@ function AppRoutes() {
 function App() {
   return (
     <AuthProvider>
-      <Router>
+      <BrowserRouter>
         <AppRoutes />
-      </Router>
+      </BrowserRouter>
     </AuthProvider>
   );
 }
