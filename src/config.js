@@ -2,7 +2,7 @@
 // Change this to your production URL when deploying
 
 // For local development:
-export const API_URL = "http://localhost:8001";
+// export const API_URL = "http://localhost:8001";
 
-// For production (PythonAnywhere), use:
-// export const API_URL = "https://YOUR_USERNAME.pythonanywhere.com";
+// For production (Render), use your Render URL:
+export const API_URL = "https://healthcare-backend-q3t8.onrender.com";
