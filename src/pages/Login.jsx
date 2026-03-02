@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "../config";
 
 function Login() {
   const [isRegister, setIsRegister] = useState(false);
@@ -29,7 +30,7 @@ function Login() {
     setError("");
     setSuccess("");
     try {
-      const response = await fetch("http://localhost:8001/auth/register", {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { API_URL } from "../config";
 
 function PHIRisks() {
   const [risks, setRisks] = useState([]);
@@ -17,7 +18,7 @@ function PHIRisks() {
   const { token, isAdmin } = useAuth();
 
   useEffect(() => {
-    fetch("http://localhost:8001/phi-risks/", {
+    fetch(`${API_URL}/phi-risks/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -56,7 +57,7 @@ function PHIRisks() {
   const handleDeleteRisk = async (riskId) => {
     if (!window.confirm("Are you sure you want to delete this PHI risk?")) return;
     try {
-      await fetch(`http://localhost:8001/phi-risks/${riskId}`, {
+      await fetch(`${API_URL}/phi-risks/${riskId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
@@ -64,7 +65,7 @@ function PHIRisks() {
         },
       });
       // Refresh risks list
-      fetch("http://localhost:8001/phi-risks/", {
+      fetch(`${API_URL}/phi-risks/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -80,7 +81,7 @@ function PHIRisks() {
 
   const handleAddRisk = async () => {
     try {
-      const response = await fetch("http://localhost:8001/phi-risks/", {
+      const response = await fetch(`${API_URL}/phi-risks/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +101,7 @@ function PHIRisks() {
           records_affected: 0,
         });
         // Refresh risks list
-        fetch("http://localhost:8001/phi-risks/", {
+        fetch(`${API_URL}/phi-risks/`, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,

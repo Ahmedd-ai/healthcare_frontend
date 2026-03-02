@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
+import { API_URL } from "../config";
 
 function Anomalies() {
   const [anomalies, setAnomalies] = useState([]);
@@ -20,7 +21,7 @@ function Anomalies() {
   });
 
   useEffect(() => {
-    fetch("http://localhost:8001/anomalies/", {
+    fetch(`${API_URL}/anomalies/`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
@@ -65,14 +66,14 @@ function Anomalies() {
   const handleDeleteAnomaly = async (anomalyId) => {
     if (!window.confirm("Are you sure you want to delete this anomaly?")) return;
     try {
-      await fetch(`http://localhost:8001/anomalies/${anomalyId}`, {
+      await fetch(`${API_URL}/anomalies/${anomalyId}`, {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
       });
-      fetch("http://localhost:8001/anomalies/", {
+      fetch(`${API_URL}/anomalies/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -90,7 +91,7 @@ function Anomalies() {
     e.preventDefault();
     setSubmitting(true);
     try {
-      await fetch("http://localhost:8001/anomalies/", {
+      await fetch(`${API_URL}/anomalies/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -100,7 +101,7 @@ function Anomalies() {
       });
 
       // Refresh anomalies list
-      fetch("http://localhost:8001/anomalies/", {
+      fetch(`${API_URL}/anomalies/`, {
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
