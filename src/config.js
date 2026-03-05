@@ -1,8 +1,5 @@
 // API Configuration
-// Change this to your production URL when deploying
+// Uses environment variable in production, defaults to localhost for development
 
-// For local development:
-// export const API_URL = "http://localhost:8001";
-
-// For production (Render), use your Render URL:
-export const API_URL = "https://healthcare-backend-q3t8.onrender.com";
+// Get API URL from environment variable (Vercel) or use localhost for development
+export const API_URL = process.env.REACT_APP_API_URL || "http://localhost:8001";

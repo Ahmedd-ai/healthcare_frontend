@@ -448,10 +448,13 @@ function StatCard({ title, value, color }) {
 }
 
 const thStyle = {
-  padding: "12px 16px",
-  fontSize: "13px",
-  color: "#475569",
-  fontWeight: "600",
+  padding: "14px 16px",
+  fontSize: 12,
+  fontWeight: 600,
+  color: "#ffffff",
+  textTransform: "uppercase",
+  letterSpacing: "0.5px",
+  background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
 };
 
 const tdStyle = {

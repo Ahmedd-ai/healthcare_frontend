@@ -120,11 +120,14 @@ function Assets() {
 
   const th = {
     textAlign: "left",
-    padding: "12px 10px",
+    padding: "14px 16px",
     fontSize: 12,
-    color: "#6b7280",
+    fontWeight: 600,
+    color: "#ffffff",
+    textTransform: "uppercase",
+    letterSpacing: "0.5px",
     borderBottom: "1px solid #e5e7eb",
-    background: "#f9fafb",
+    background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
   };
 
   const td = {

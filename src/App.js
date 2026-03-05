@@ -1,7 +1,8 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import { AuthProvider, useAuth } from "./context/AuthContext";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext";
 import Sidebar from "./components/Sidebar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // Pages
 import Compliance from "./pages/Compliance";
@@ -11,20 +12,6 @@ import Assets from "./pages/Assets";
 import Vulnerabilities from "./pages/Vulnerabilities";
 import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
-
-function ProtectedRoute({ children }) {
-  const { token, loading } = useAuth();
-  
-  if (loading) {
-    return <div style={{ padding: "20px" }}>Loading...</div>;
-  }
-  
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
-  
-  return children;
-}
 
 function AppLayout({ children }) {
   return (

@@ -492,10 +492,13 @@ function AnomalyFormModal({ formData, handleInputChange, handleSubmit, onClose, 
 
 const thStyle = {
   textAlign: "left",
-  padding: "12px 16px",
-  fontSize: 13,
-  color: "#556",
+  padding: "14px 16px",
+  fontSize: 12,
   fontWeight: 600,
+  color: "#ffffff",
+  textTransform: "uppercase",
+  letterSpacing: "0.5px",
+  background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
 };
 
 const tdStyle = {
